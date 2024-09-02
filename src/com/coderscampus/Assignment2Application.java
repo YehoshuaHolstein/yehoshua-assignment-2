@@ -10,29 +10,30 @@ public class Assignment2Application {
 		Random r = new Random();
 		int low = 1;
 		int high = 100;
-		int randonNumber = r.nextInt(high-low) + low;
-		System.out.println("Randon number is: " + randonNumber);
+		int randomNumber = r.nextInt(high-low) + low;
+		System.out.println("Random number is: " + randomNumber);
 		
 		Scanner scanner = new Scanner(System.in);
 		
-		int intGuess = collectInput(scanner, "Please pick a number "
-				+ "between 1 and 100");
+		int intGuess;
 		
 		int i = 0;
 		boolean jackpot = false;
-		while (i < 6 && jackpot == false) {
-		
+		while (i < 5 && jackpot == false) {
+			intGuess = collectInput(scanner, "Please pick a number "
+					+ "between 1 and 100");
 			if (intGuess < 1 || intGuess > 100) {
-				intGuess = collectInput(scanner, "Your guess is not between 1 and 100, "
-					+ "please try again");
+				System.out.println("Your guess is not between 1 and 100, "
+						+ "please try again");
+				i--;
 			}
-			else if (intGuess < randonNumber) {
-				intGuess = collectInput(scanner, "Please pick a higher number");
+			else if (intGuess < randomNumber) {
+				System.out.println("Please pick a higher number");
 			}
-			else if (intGuess > randonNumber) {
-				intGuess = collectInput(scanner, "Please pick a lower number");
+			else if (intGuess > randomNumber) {
+				System.out.println("Please pick a lower number");
 			}
-			else if (intGuess == randonNumber){
+			else if (intGuess == randomNumber){
 				System.out.println("You win!");
 				jackpot = true;
 			}
@@ -42,19 +43,18 @@ public class Assignment2Application {
 		}
 		
 		if (!jackpot) {
-			System.out.println("You lose, the number to guess "
-						+ "was: " + randonNumber); 
+			System.out.println("You lose!");
+			System.out.println("The number to guess was: " + randomNumber);  
 			}
 		
 		scanner.close();
-
 	}
-
-	private static int collectInput(Scanner scanner, String message) {
-		System.out.println(message);
-		String userInput = scanner.nextLine();
-		int intInput = Integer.parseInt(userInput);
-		return intInput;
-	}
+		
+		private static int collectInput(Scanner scanner, String message) {
+			System.out.println(message);
+			String userInput = scanner.nextLine();
+			int intInput = Integer.parseInt(userInput);
+			return intInput;
+		}
 
 }
