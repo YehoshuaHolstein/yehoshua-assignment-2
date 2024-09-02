@@ -11,7 +11,7 @@ public class Assignment2Application {
 		int low = 1;
 		int high = 100;
 		int randomNumber = r.nextInt(high-low) + low;
-		System.out.println("Random number is: " + randomNumber);
+		//System.out.println("Random number is: " + randomNumber);
 		
 		Scanner scanner = new Scanner(System.in);
 		
@@ -49,12 +49,13 @@ public class Assignment2Application {
 		
 		scanner.close();
 	}
+	
+	private static int collectInput(Scanner scanner, String message) {
+		System.out.println(message);
+		String userInput = scanner.nextLine();
+		int intInput = Integer.parseInt(userInput);
+		return intInput;
+	}
 		
-		private static int collectInput(Scanner scanner, String message) {
-			System.out.println(message);
-			String userInput = scanner.nextLine();
-			int intInput = Integer.parseInt(userInput);
-			return intInput;
-		}
-
+		
 }
