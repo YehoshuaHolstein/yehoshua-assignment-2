@@ -9,7 +9,7 @@ public class Assignment2Application {
 		
 		Random r = new Random();
 		int low = 1;
-		int high = 100;
+		int high = 101;
 		int randomNumber = r.nextInt(high-low) + low;
 		//System.out.println("Random number is: " + randomNumber);
 		
