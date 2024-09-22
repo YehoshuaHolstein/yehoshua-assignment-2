@@ -8,41 +8,41 @@ public class Assignment2Application {
 	public static void main(String[] args) {
 		
 		Random r = new Random();
-		int low = 1;
-		int high = 101;
-		int randomNumber = r.nextInt(high-low) + low;
-		//System.out.println("Random number is: " + randomNumber);
+		int randomNumber = r.nextInt(100) + 1;
+		System.out.println("Random number is: " + randomNumber);
 		
 		Scanner scanner = new Scanner(System.in);
 		
-		int intGuess;
+		int playerGuess;
 		
 		int i = 0;
-		boolean jackpot = false;
-		while (i < 5 && jackpot == false) {
-			intGuess = collectInput(scanner, "Please pick a number "
+		boolean winningGame = false;
+		while (i < 5 && !winningGame) {
+			playerGuess = collectInput(scanner, "Please pick a number "
 					+ "between 1 and 100");
-			if (intGuess < 1 || intGuess > 100) {
+			
+			if (playerGuess < 1 || playerGuess > 100) {
 				System.out.println("Your guess is not between 1 and 100, "
 						+ "please try again");
-				i--;
+				continue;
 			}
-			else if (intGuess < randomNumber) {
+			else if (playerGuess < randomNumber) {
 				System.out.println("Please pick a higher number");
 			}
-			else if (intGuess > randomNumber) {
+			else if (playerGuess > randomNumber) {
 				System.out.println("Please pick a lower number");
 			}
-			else if (intGuess == randomNumber){
+			else {
 				System.out.println("You win!");
-				jackpot = true;
+				winningGame = true;
+				break;
 			}
 						
 			i++;
 	
 		}
 		
-		if (!jackpot) {
+		if (!winningGame) {
 			System.out.println("You lose!");
 			System.out.println("The number to guess was: " + randomNumber);  
 			}
@@ -53,8 +53,7 @@ public class Assignment2Application {
 	private static int collectInput(Scanner scanner, String message) {
 		System.out.println(message);
 		String userInput = scanner.nextLine();
-		int intInput = Integer.parseInt(userInput);
-		return intInput;
+		return Integer.parseInt(userInput);
 	}
 		
 		
